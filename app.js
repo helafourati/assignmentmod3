@@ -1,4 +1,6 @@
-angular.module('NarrowItDownApp',[])
+(
+    function() {
+      angular.module('NarrowItDownApp',[])
 .controller('NarrowItDownController',NarrowItDownController)
 .service('MenuSearchService',MenuSearchService)
 .directive('foundItems',FoundItemsDirective );
@@ -85,7 +87,7 @@ function MenuSearchService($http) {
     menu.getMatchedMenuItems = function (searchValue) {
          return $http({
         method : "GET",
-        url : ("https://davids-restaurant.herokuapp.com/menu_items.json"),
+        url : ("https://coursera-jhu-default-rtdb.firebaseio.com/menu_items.json"),
         params:{}
       })
       .then(function(result) {
@@ -123,3 +125,5 @@ function MenuSearchService($http) {
     return returnItems ;
   }
 }
+}
+)();
